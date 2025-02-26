@@ -16,6 +16,11 @@
             class="flex flex-row items-center gap-1 p-2 hover:bg-muted dark:hover:bg-accent rounded-md cursor-pointer"
             @click="handleModelSelect(provider.id, model)"
           >
+            <Icon 
+              v-if="isSelected(provider.id, model.id)" 
+              icon="lucide:check" 
+              class="w-4 h-4 text-primary mr-1" 
+            />
             <ModelIcon :model-id="model.id"></ModelIcon>
             <span class="text-xs font-bold truncate flex-1">{{ model.name }}</span>
             <Badge
@@ -41,6 +46,7 @@ import { useChatStore } from '@/stores/chat'
 import { usePresenter } from '@/composables/usePresenter'
 import type { MODEL_META } from '@shared/presenter'
 import ModelIcon from './icons/ModelIcon.vue'
+import { Icon } from '@iconify/vue'
 
 const { t } = useI18n()
 const keyword = ref('')

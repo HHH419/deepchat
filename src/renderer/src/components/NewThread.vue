@@ -8,19 +8,9 @@
       <template #addon-buttons>
         <Popover v-model:open="modelSelectOpen">
           <PopoverTrigger as-child>
-            <Button variant="outline" class="flex items-center gap-1.5 px-2 h-auto py-1" size="sm">
+            <Button variant="outline" class="flex items-center justify-center w-8 h-8 p-0 rounded-full" size="icon">
               <ModelIcon class="w-4 h-4" :model-id="activeModel.id"></ModelIcon>
-              <!-- <Icon icon="lucide:message-circle" class="w-5 h-5 text-muted-foreground" /> -->
-              <h2 class="text-xs font-bold">{{ activeModel.name }}</h2>
-              <Badge
-                v-for="tag in activeModel.tags"
-                :key="tag"
-                variant="outline"
-                class="py-0 rounded-lg"
-                size="xs"
-                >{{ t(`model.tags.${tag}`) }}</Badge
-              >
-              <Icon icon="lucide:chevron-right" class="w-4 h-4 text-muted-foreground" />
+              <span class="sr-only">{{ activeModel.name }}</span>
             </Button>
           </PopoverTrigger>
           <PopoverContent align="start" class="p-0 w-80">
@@ -39,8 +29,6 @@ import ChatInput from './ChatInput.vue'
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover'
 import { Button } from '@/components/ui/button'
 import ModelIcon from './icons/ModelIcon.vue'
-import { Badge } from '@/components/ui/badge'
-import { Icon } from '@iconify/vue'
 import ModelSelect from './ModelSelect.vue'
 import { useChatStore } from '@/stores/chat'
 import { MODEL_META } from '@shared/presenter'
